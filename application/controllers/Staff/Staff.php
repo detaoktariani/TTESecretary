@@ -12,8 +12,18 @@ class Staff extends CI_Controller {
       $data = array(
         'judul' => 'Input surat keluar',
         'html'  => 'Staff/Inputsuratkeluar',
-        'data'  => $this->Modelstaff->inputsuratkeluar()
         );
         $this->load->view('Dashboard', $data);
       }}
+
+  public function tabelsuratkeluar(){
+    {
+      
+      $data = array(
+        'judul' => 'Tabel surat keluar',
+        'html'  => 'Staff/Tabelsuratkeluar',
+        'data'  => $this->Modelstaff->tabelsuratkeluar()
+            );
+            $this->load->view('Dashboard', $data);
+          }}    
 }

@@ -27,7 +27,11 @@ class Admin extends CI_Controller {
 	public function Welcome()
 	{
 	
-		$this->load->view('Dashboard');
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Staff/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
 	}
 
 	public function Staff()
@@ -40,7 +44,15 @@ class Admin extends CI_Controller {
 		  $this->load->view('Dashboard', $data);
 	}
 
-
+	public function Kasub()
+	{
+	
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Kasub/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
 	
 
 }

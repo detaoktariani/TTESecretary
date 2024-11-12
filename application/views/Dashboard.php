@@ -17,7 +17,6 @@
   <!-- Google Fonts -->
   <link href="<?php echo base_url('https://fonts.gstatic.com')?>" rel="preconnect">
   <link href="<?php echo base_url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')?>" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css')?>" rel="stylesheet">
@@ -219,7 +218,7 @@
             </a>
           </li>
           <li>
-            <a href="components-alerts.html">
+            <a href="<?php echo base_url('Staff/Staff/tabelsuratkeluar')?>">
               <i class="bi bi-circle"></i><span>Tabel Surat Keluar</span>
             </a>
           </li>
@@ -297,7 +296,7 @@
   <script src="<?php echo base_url('assets/vendor/simple-datatables/simple-datatables.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/tinymce/tinymce.min.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js')?>"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="<?php echo base_url('assets/js/main.js')?>"></script>
 

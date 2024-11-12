@@ -12,7 +12,7 @@
               <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nomor</label>
                   <div class="col-md-1">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="" disabled>
                   </div>
                   <span class="col-md-auto">/</span>
                   <div class="col-md-2">
@@ -63,19 +63,7 @@
                     <input type="text" class="form-control">
                   </div>
                 </div>
-
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Pejabat Penandatangan</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Pilih</option>
-                      <option value="1">Ketua</option>
-                      <option value="2">Wakil Ketua</option>
-                      <option value="3">Sekretaris</option>
-                      <option value="4">Panitera</option>
-                    </select>
-                  </div>
-                </div>
+  
 
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Link Dokumen</label>

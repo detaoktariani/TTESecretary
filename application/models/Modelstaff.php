@@ -19,6 +19,13 @@ class Modelstaff extends CI_Model {
     // $this->db->insert('user', $data);
   }
 
+  public function tabelsuratkeluar()
+  {
+      $query = $this->db->get('surat_keluar');
+      return $query->result();
+  }
+  
+  }
 
 
 
@@ -32,5 +39,3 @@ class Modelstaff extends CI_Model {
 
 
 
-
-}
