@@ -8,7 +8,7 @@
 <body>
 <div class="container mt-5">
     <div class="row">
-        <table class="table datatable">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">No</th>

@@ -7,14 +7,25 @@ class Staff extends CI_Controller {
     }
 
 	public function index(){
-		{
 	
       $data = array(
         'judul' => 'Input surat keluar',
         'html'  => 'Staff/Inputsuratkeluar',
         );
         $this->load->view('Dashboard', $data);
-      }}
+  }
+
+  public function insuratkeluar(){
+    // $idinstansi=$this->input->post('nama_suami');
+    $res = $this->Modelstaff->insert_suratkeluar();   
+    if($res>=1){
+      $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      redirect('Staff/Staff/tabelsuratkeluar');
+    }else{
+      $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      redirect('Staff/Staff/index');    
+    }
+  }
 
   public function tabelsuratkeluar(){
     {
@@ -25,5 +36,6 @@ class Staff extends CI_Controller {
         'data'  => $this->Modelstaff->tabelsuratkeluar()
             );
             $this->load->view('Dashboard', $data);
-          }}    
+    }}
+
 }

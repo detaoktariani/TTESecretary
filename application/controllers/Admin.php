@@ -24,15 +24,11 @@ class Admin extends CI_Controller {
         parent::__construct();
     }
     
-	public function Welcome()
-	{
+	// public function Welcome()
+	// {
 	
-		$data = array(
-			'judul' => 'Dashboard',
-			'html'  => 'Staff/Dashboard',
-		  );
-		  $this->load->view('Dashboard', $data);
-	}
+	// 	$this->load->view('Dashboard');
+	// }
 
 	public function Staff()
 	{
@@ -44,15 +40,7 @@ class Admin extends CI_Controller {
 		  $this->load->view('Dashboard', $data);
 	}
 
-	public function Kasub()
-	{
-	
-		$data = array(
-			'judul' => 'Dashboard',
-			'html'  => 'Kasub/Dashboard',
-		  );
-		  $this->load->view('Dashboard', $data);
-	}
+
 	
 
 }
