@@ -18,7 +18,6 @@
                     <th scope="col">Perihal</th>
                     <th scope="col">Link Dokumen</th>
                     <th scope="col">Validasi</th>
-                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,19 +31,18 @@
                     <td><a href="<?php echo $surkel->linksurat; ?>" target="_blank"><?php echo $surkel->perihal; ?></a></td>
                     <td>
                         <?php 
-                            if ($surkel->statusvalidasi == 1) {
+                            if ($surkel->statusvalidasi == 0) {
+                                echo '<span class="badge badge-danger">Belum divalidasi</span>'; 
+                            } elseif ($surkel->statusvalidasi == 1) {    
                                 echo '<span class="badge badge-success">Kepala Sub Bagian</span>';
                             } elseif ($surkel->statusvalidasi == 2) {
                                 echo '<span class="badge badge-info">Kepala Bagian</span>';
                             } elseif ($surkel->statusvalidasi == 3) {
                                 echo '<span class="badge badge-primary">Sekretaris</span>';    
                             } else {
-                                echo '<span class="badge badge-danger">Belum divalidasi</span>';
+                                echo '-';
                             }   
                         ?>
-                    </td>
-                    <td><a href='<?php echo base_url('Staff/Staff/tampedsuratkeluar?id='.$surkel['id']); ?>' ><button class="btn btn-primary" >Edit</button> <br>
-                        <button class="btn btn-danger" >Hapus </button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
