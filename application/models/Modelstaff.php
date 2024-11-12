@@ -14,9 +14,9 @@ class Modelstaff extends CI_Model {
        }else if($notujuanP== "Wakil") {
         $notujuanP = 'WKPTA.W7-A';
        }else if($notujuanP== "Sekretaris") {
-        $notujuanP = 'SKPTA.W7-A';
+        $notujuanP = 'SEK.PTA.W7-A';
        }else if($notujuanP== "Panitera") {
-        $notujuanP = 'PANPTA.W7-A';
+        $notujuanP = 'PAN.PTA.W7-A';
        }
       $nomorfx = '/'. $notujuanP . '/' .$this->input->post('kode') . '/' .$this->input->post('bulan') .'/' .$this->input->post('tahun');
       // $this->db->set('uid', 'UUID()', FALSE);
@@ -47,13 +47,6 @@ class Modelstaff extends CI_Model {
       $query = $this->db->get('surat_keluar');
       return $query->result();
   }
-
-
-
-
-
-
-
 
 
 
