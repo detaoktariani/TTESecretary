@@ -63,6 +63,7 @@
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Silahkan Login</h5>
                     <p class="text-center small">Enter your username & password to login</p>
+                    <center><strong style="color:red"><?php echo $this->session->flashdata('error'); ?></strong></center>
                   </div>
 
                   <!-- <form class="row g-3 needs-validation" novalidate> -->
