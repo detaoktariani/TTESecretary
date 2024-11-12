@@ -27,8 +27,10 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('error','Anda memasukkan data yg salah!');
                 echo "data salah";
 				// redirect('Login/index');
-			} else if ($this->session->userdata('level')=='1' || '2') {
+			} else if ($this->session->userdata('level')=='1') {
 				redirect('Admin/Welcome');
+			}else if ($this->session->userdata('level')=='2') {
+				redirect('Admin/Staff');
 			}else{
 				redirect('Login/index');
 			}
