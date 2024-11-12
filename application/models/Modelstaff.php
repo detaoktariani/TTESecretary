@@ -48,6 +48,22 @@ class Modelstaff extends CI_Model {
       return $query->result();
   }
 
+  function tedit_suratkeluar($id){
+    $this->db->select('*');
+   $this->db->from('suratkeluar');
+   $this->db->where('id',$id);
+   $query = $this->db->get();
+   return $query->result_array();
+  }
+
+  function edit_suratkeluar($id){
+    $this->db->select('*');
+   $this->db->from('suratkeluar');
+   $this->db->where('id',$id);
+   $query = $this->db->get();
+   return $query->result_array();
+  }
+
 
 
 

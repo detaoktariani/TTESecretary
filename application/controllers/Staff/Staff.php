@@ -16,7 +16,6 @@ class Staff extends CI_Controller {
   }
 
   public function insuratkeluar(){
-    // $idinstansi=$this->input->post('nama_suami');
     $res = $this->Modelstaff->insert_suratkeluar();   
     if($res>=1){
       $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -36,6 +35,29 @@ class Staff extends CI_Controller {
         'data'  => $this->Modelstaff->tabelsuratkeluar()
             );
             $this->load->view('Dashboard', $data);
-    }}
+    }
+  }
+
+  public function tampedsuratkeluar(){
+    $id=$this->input->get('id');
+    $data = array(
+      'judul' => 'Edit surat keluar',
+      'html'  => 'Staff/Editsuratkeluar',
+      'data'  => $this->Modelstaff->tedit_suratkeluar($id),
+      );
+      $this->load->view('Dashboard', $data);
+  }
+
+  public function edsuratkeluar(){
+    $res = $this->Modelstaff->edit_suratkeluar();   
+    if($res>=1){
+      $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      redirect('Staff/Staff/tabelsuratkeluar');
+    }else{
+      $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      redirect('Staff/Staff/tampedsuratkeluar');    
+    }
+  }
+
 
 }

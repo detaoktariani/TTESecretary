@@ -18,6 +18,7 @@
                     <th scope="col">Perihal</th>
                     <th scope="col">Link Dokumen</th>
                     <th scope="col">Validasi</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,9 @@
                                 echo '<span class="badge badge-danger">Belum divalidasi</span>';
                             }   
                         ?>
+                    </td>
+                    <td><a href='<?php echo base_url('Staff/Staff/tampedsuratkeluar?id='.$surkel['id']); ?>' ><button class="btn btn-primary" >Edit</button> <br>
+                        <button class="btn btn-danger" >Hapus </button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
