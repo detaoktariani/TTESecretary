@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('Model_login');
-        $this->load->helper('url','activity');
+        $this->load->helper('url');
 	}
 
 	 public function index() {
@@ -28,7 +28,6 @@ class Login extends CI_Controller {
                 echo "data salah";
 				// redirect('Login/index');
 			} else if ($this->session->userdata('level')=='1' || '2') {
-				log_user_activity($user, "Login berhasil");
 				redirect('Admin/Welcome');
 			}else{
 				redirect('Login/index');
