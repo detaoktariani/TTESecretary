@@ -19,9 +19,11 @@ class Staff extends CI_Controller {
     // $idinstansi=$this->input->post('nama_suami');
     $res = $this->Modelstaff->insert_suratkeluar();   
     if($res>=1){
+      log_user_activity($user, "Input surat");
       $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
       redirect('Staff/Staff/tabelsuratkeluar');
     }else{
+      log_user_activity($user, "Gagal input surat");
       $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
       redirect('Staff/Staff/index');    
     }
@@ -29,7 +31,6 @@ class Staff extends CI_Controller {
 
   public function tabelsuratkeluar(){
     {
-      
       $data = array(
         'judul' => 'Tabel surat keluar',
         'html'  => 'Staff/Tabelsuratkeluar',

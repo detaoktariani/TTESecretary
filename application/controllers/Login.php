@@ -5,9 +5,6 @@ class Login extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
-		$this->load->model('Model_login');
-        $this->load->helper('url');
 	}
 
 	 public function index() {
@@ -24,19 +21,22 @@ class Login extends CI_Controller {
 			$login = $this->Model_login->masuk($user, $pass);
 			
 			if ($login == FALSE) {
-				$this->session->set_flashdata('error','Anda memasukkan data yg salah!');
-                echo "data salah";
-				// redirect('Login/index');
+				$this->session->set_flashdata('error','Username dan password salah!');
+                // echo "data salah";
+				redirect('Login/index');
 			} else if ($this->session->userdata('level')=='1') {
+				log_user_activity($user, "Login admin");
 				redirect('Admin/Welcome');
 			}else if ($this->session->userdata('level')=='2') {
+				log_user_activity($user, "Login staff");
 				redirect('Admin/Staff');
 			}else{
+				log_user_activity($user, "gagal login");
 				redirect('Login/index');
 			}
 			
 		} else {
-			$this->session->set_flashdata('error','Anda memasukkan data yg salah!');
+			$this->session->set_flashdata('error','Username dan password salah!');
 			redirect('Login/index');
 		}
 	}
