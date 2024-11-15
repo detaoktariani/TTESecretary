@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <title>Data Surat</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script>
+        function confirmValidation(event) {
+            event.preventDefault();
+            var confirmation = confirm("Apakah Anda yakin ingin melakukan validasi?");
+            if (confirmation) {
+                event.target.submit(); 
+            } else {
+                alert("Validasi dibatalkan.");
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container mt-5">
@@ -28,21 +39,18 @@
                     <td><?php echo $surkel->nomor; ?></td>
                     <td><?php echo $surkel->tgl_surat; ?></td>
                     <td><?php echo $surkel->perihal; ?></td>
-                    <td><a href="<?php echo $surkel->linksurat; ?>" target="_blank">Link Dokumen</a></td>
+                    <td><a href="<?php echo $surkel->linksurat; ?>" target="_blank"><?php echo $surkel->perihal; ?></a></td>
                     <td>
-                        <?php 
-                            if ($surkel->statusvalidasi == 0) {
-                                echo '<span class="badge badge-danger">Belum divalidasi</span>'; 
-                            } elseif ($surkel->statusvalidasi == 1) {    
-                                echo '<span class="badge badge-success">Kepala Sub Bagian</span>';
-                            } elseif ($surkel->statusvalidasi == 2) {
-                                echo '<span class="badge badge-info">Kepala Bagian</span>';
-                            } elseif ($surkel->statusvalidasi == 3) {
-                                echo '<span class="badge badge-primary">Sekretaris</span>';    
-                            } else {
-                                echo '-';
-                            }   
-                        ?>
+                        <?php if ($surkel->statusvalidasi == 0): ?>
+                            <span class="badge bg-warning text-dark">Menunggu Validasi Kasub</span> 
+                        <?php elseif ($surkel->statusvalidasi == 1): ?>
+                            <form method="post" action="<?php echo base_url('Kabag/tabelvalidasi'); ?>" onsubmit="confirmValidation(event)">
+                                <input type="hidden" name="id" value="<?php echo $surkel->id; ?>">
+                                <button type="submit" class="btn btn-danger btn-sm">Validasi</button>
+                            </form>
+                        <?php else: ?>
+                            <span class="badge bg-success">Tervalidasi</span>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -48,6 +48,25 @@ class Modelstaff extends CI_Model {
       return $query->result();
   }
 
+  public function tabelvalidasi()
+  {
+      $query = $this->db->get('surat_keluar');
+      return $query->result();
+  }
+
+  public function updateValidasiKasub($id) {
+    $this->db->where('id', $id);
+    return $this->db->update('surat_keluar', array('statusvalidasi' => 1));
+  }
+  public function updateValidasiKabag($id) {
+    $this->db->where('id', $id);
+    return $this->db->update('surat_keluar', array('statusvalidasi' => 2));
+  } 
+  public function updateValidasiSekretaris($id) {
+    $this->db->where('id', $id);
+    return $this->db->update('surat_keluar', array('statusvalidasi' => 3));
+  }
+
   function tedit_suratkeluar($id){
     $this->db->select('*');
    $this->db->from('suratkeluar');

@@ -40,6 +40,35 @@ class Admin extends CI_Controller {
 		  $this->load->view('Dashboard', $data);
 	}
 
+	public function Kasub()
+	{
+	
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Kasub/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
+	
+	public function Kabag()
+	{
+	
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Kabag/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
+
+	public function Sekretaris()
+	{
+	
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Sekretaris/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
 
 	
 

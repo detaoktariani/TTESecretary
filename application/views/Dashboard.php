@@ -17,7 +17,6 @@
   <!-- Google Fonts -->
   <link href="<?php echo base_url('https://fonts.gstatic.com')?>" rel="preconnect">
   <link href="<?php echo base_url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')?>" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css')?>" rel="stylesheet">
@@ -141,18 +140,30 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $this->session->userdata('nama')?></span>
+            <img src="<?php echo base_url('assets/img/profile-img.jpg')?>" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-          <li>
-              <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('Login/logout')?>">
-                <i class="ri-edit-box-line"></i>
-                <span>Update Password</span>
+            <li class="dropdown-header">
+              <h6>Kevin Anderson</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('Login/logout')?>">
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Log Out</span>
               </a>
@@ -166,55 +177,128 @@
 
   </header><!-- End Header -->
 
+  
+
+
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
+    <?php if($this->session->userdata('level') == '3' ) { ?>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+  <li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="bi bi-journal-text"></i><span>Surat Masuk</span>
+  </a>
+</li>
+  <li class="nav-item">
+  <a class="nav-link" href="<?php echo base_url('Kasub/tabelvalidasi')?>">
+    <i class="bi bi-journal-text"></i><span>Surat Keluar</span>
+  </a>
+</li> 
+
+<?php } else if($this->session->userdata('level') == '4' ) { ?>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+  <li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="bi bi-journal-text"></i><span>Surat Masuk</span>
+  </a>
+</li>
+  <li class="nav-item">
+  <a class="nav-link" href="<?php echo base_url('Kabag/tabelvalidasi')?>">
+    <i class="bi bi-journal-text"></i><span>Surat Keluar</span>
+  </a>
+</li> 
+
+<?php } else if($this->session->userdata('level') == '5' ) { ?>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+  <li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="bi bi-journal-text"></i><span>Surat Masuk</span>
+  </a>
+</li>
+  <li class="nav-item">
+  <a class="nav-link" href="<?php echo base_url('Sekretaris/tabelvalidasi')?>">
+    <i class="bi bi-journal-text"></i><span>Surat Keluar</span>
+  </a>
+</li> 
+
+<?php } else if($this->session->userdata('level') == '2') { ?>
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-menu-button-wide"></i><span>Surat Masuk</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="components-alerts.html">
+          <i class="bi bi-circle"></i><span>Input Surat Masuk</span>
+        </a>
+      </li>
+      <li>
+        <a href="components-alerts.html">
+          <i class="bi bi-circle"></i><span>Tabel Surat Masuk</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Components Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Surat Keluar</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="<?php echo base_url('Staff/Staff/index')?>">
+          <i class="bi bi-circle"></i><span>Input Surat Keluar</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php echo base_url('Staff/Staff/tabelsuratkeluar')?>">
+          <i class="bi bi-circle"></i><span>Tabel Surat Keluar</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+<?php } ?>
+
+      
+      <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Surat Masuk</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Log out</span>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Input Surat Masuk</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Tabel Surat Masuk</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Surat Keluar</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="<?php echo base_url('Staff/Staff/index')?>">
-              <i class="bi bi-circle"></i><span>Input Surat Keluar</span>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('Staff/Staff/tabelsuratkeluar')?>">
-              <i class="bi bi-circle"></i><span>Tabel Surat Keluar</span>
-            </a>
-          </li>
-          
-        </ul>
-      </li><!-- End Forms Nav -->
-
+      </li><!-- End Login Page Nav -->
 
     </ul>
 
@@ -269,7 +353,7 @@
   <script src="<?php echo base_url('assets/vendor/simple-datatables/simple-datatables.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/tinymce/tinymce.min.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js')?>"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="<?php echo base_url('assets/js/main.js')?>"></script>
 
