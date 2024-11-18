@@ -20,13 +20,20 @@ class Model_login extends CI_Model {
                 'password' => $row->password,  // Updated key
                 'nama' => $row->nama,
                 'level' => $row->level,
-                'foto' => $row->foto,
+                'id_jabatan' => $row->id_jabatan,
                 // 'logged_in' => TRUE // Adding a flag to check login status
             );
             $this->session->set_userdata($data);
             return TRUE;
         }
         return FALSE;
+    }
+
+    public function getDataKey(){
+        $this->db->select('*');
+        $this->db->from('datakey');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }
 

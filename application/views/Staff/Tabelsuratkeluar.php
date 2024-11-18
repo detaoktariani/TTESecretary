@@ -18,6 +18,7 @@
                     <th scope="col">Perihal</th>
                     <th scope="col">Link Dokumen</th>
                     <th scope="col">Validasi</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                                 echo '-';
                             }   
                         ?>
+                    </td>
+                    <td><a class="btn btn-primary" href="<?php echo base_url('Staff/Staff/tampedsuratkeluar?id=' . $surkel->id); ?>">Edit</a>
+                        <a class="btn btn-danger" href="<?php echo base_url() . 'Staff/Staff/hapussuratkeluar?id=' . $surkel->id; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

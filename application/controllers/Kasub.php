@@ -21,6 +21,8 @@ class Kasub extends CI_Controller {
             $id_surat = $this->input->post('id');
             $this->load->model('Modelstaff');
             $this->Modelstaff->updateValidasiKasub($id_surat);
+            $user = $this->session->userdata('username');
+            log_user_activity($user, "valdasi kasub surat dengan id $id_surat");
             $this->session->set_flashdata('message', 'Surat berhasil divalidasi.');
             redirect('Kasub/tabelvalidasi');
         }

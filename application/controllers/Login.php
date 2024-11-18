@@ -25,16 +25,22 @@ class Login extends CI_Controller {
                 // echo "data salah";
 				redirect('Login/index');
 			} else if ($this->session->userdata('level')=='1') {
+				log_user_activity($user, "Login admin");
 				redirect('Admin/Welcome');
 			}else if ($this->session->userdata('level')=='2') {
+				log_user_activity($user, "Login staff");
 				redirect('Admin/Staff');
 			}else if ($this->session->userdata('level')=='3') {
+				log_user_activity($user, "Login Kasub");
 				redirect('Admin/Kasub');
 			}else if ($this->session->userdata('level')=='4') {
+				log_user_activity($user, "Login Kabag");
 				redirect('Admin/Kabag');
 			}else if ($this->session->userdata('level')=='5') {
+				log_user_activity($user, "Login Sekretaris");
 				redirect('Admin/Sekretaris');			
 			}else{
+				log_user_activity($user, "gagal login");
 				redirect('Login/index');
 			}
 			

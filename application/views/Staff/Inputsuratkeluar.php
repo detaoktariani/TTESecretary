@@ -1,5 +1,5 @@
 
-    <section class="section">
+<section class="section">
       <div class="row">
         <!-- <div class="col-lg-6"> -->
 
@@ -17,12 +17,12 @@
                   </div>
                   <span class="col-md-auto">/</span>
                   <div class="col-md-2">
-                    <select class="form-select" aria-label="Default select example" name = "ttdpejabat">
+                    <select class="form-select" aria-label="Default select example" name = "id_jabatan">
                       <option selected>Pilih</option>
-                      <option value="Ketua">KPTA.W7-A</option>
-                      <option value="Wakil">WKPTA.W7-A</option>
-                      <option value="Sekretaris">SEK.PTA.W7-A</option>
-                      <option value="Panitera">PAN.PTA.W7-A</option>
+                      <option value="8">KPTA.W7-A</option>
+                      <option value="9">WKPTA.W7-A</option>
+                      <option value="1">SEK.PTA.W7-A</option>
+                      <option value="10">PAN.PTA.W7-A</option>
                     </select>
                   </div>
                   <span class="col-md-auto">/</span>

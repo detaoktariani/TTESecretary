@@ -21,6 +21,8 @@ class Kabag extends CI_Controller {
             $id_surat = $this->input->post('id');
             $this->load->model('Modelstaff');
             $this->Modelstaff->updateValidasiKabag($id_surat);
+            $user = $this->session->userdata('username');
+            log_user_activity($user, "valdasi kabag surat dengan id $id_surat");
             $this->session->set_flashdata('message', 'Surat berhasil divalidasi.');
             redirect('Kabag/tabelvalidasi');
         }

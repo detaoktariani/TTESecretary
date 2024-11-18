@@ -24,11 +24,14 @@ class Admin extends CI_Controller {
         parent::__construct();
     }
     
-	// public function Welcome()
-	// {
-	
-	// 	$this->load->view('Dashboard');
-	// }
+	public function Welcome()
+	{
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Staff/Dashboard',
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
 
 	public function Staff()
 	{
@@ -70,6 +73,31 @@ class Admin extends CI_Controller {
 		  $this->load->view('Dashboard', $data);
 	}
 
+	public function tabelsuratkeluar(){
+		{
+		  $data = array(
+			'judul' => 'Tabel surat keluar',
+			'html'  => 'Admin/SuratKeluar',
+			'data'  => $this->Modelstaff->suratkeluarAdm()
+				);
+			$this->load->view('Dashboard', $data);
+		}
+	  }
 	
+
+	public function update_nomor()
+{
+    $id = $this->input->post('id');
+    $field = $this->input->post('field');
+    $value = $this->input->post('value');
+    
+    $this->Modelstaff->update_nomor($id, $field, $value);
+    
+    $user = $this->session->userdata('username');  // Sesuaikan dengan cara Anda mengambil user_id
+    $activity = "Update nomor surat $value";
+    log_user_activity($user, $activity);
+
+    echo json_encode(['status' => 'success']);
+}
 
 }
