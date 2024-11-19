@@ -129,10 +129,20 @@ class Modelstaff extends CI_Model {
     return $a;
   }
 
-  public function tabelvalidasi()
+  public function tabelvalidasikasub()
   {
-      $query = $this->db->get('surat_keluar');
-      return $query->result();
+    $this->db->select('unit_organisasi_id');
+    $this->db->from('tbjabatan');
+    $this->db->where('id_jabatan',$this->session->userdata('id_jabatan'));
+    $query = $this->db->get();
+    $ambil= $query->result_array();
+    $unor_id =$ambil[0]["unit_organisasi_id"];
+
+    $this->db->select('*');
+    $this->db->from('surat_keluar');
+    $this->db->where('unit_organisasi_id',$unor_id);
+    $query = $this->db->get();
+    return $query->result();
   }
 
   public function updateValidasiKasub($id) {
@@ -162,6 +172,66 @@ class Modelstaff extends CI_Model {
     $query = $this->db->get();
     return $query->result();
   }
+
+  public function message($id)
+  {  
+    $this->db->select('*');
+    $this->db->from('surat_keluar');
+    $this->db->where('id',$id);
+    $query = $this->db->get();
+    $msg= $query->result_array();
+    $tgl= $msg[0]["tgl_surat"];
+    $formattedDate = date("d F Y", strtotime($tgl));
+    $perihal= $msg[0]["perihal"];
+    $message2 = "<p>
+            Kepada Bapak/Ibu <br>
+            Terdapat surat baru yang perlu divalidasi sebagai berikut <br>
+            Tanggal Surat : " . $formattedDate. "<br>
+            Perihal : " . $perihal . "<br>
+            Mohon untuk segera validasi melalui aplikasi SMSK (https://SMSK.pta-bengkulu.go.id/HAHAHA) <br>
+        </p>";
+    return $message2;
+  }
+
+  public function tabelvalidasikabag()
+  {
+    $this->db->select('unit_organisasi_id');
+    $this->db->from('tbjabatan');
+    $this->db->where('supervisor_id',$this->session->userdata('id_jabatan'));
+    $query = $this->db->get();
+    $ambil= $query->result_array();
+    $unor_ids = array_column($ambil, 'unit_organisasi_id');
+
+    $this->db->select('*');
+    $this->db->from('surat_keluar');
+    $this->db->where_in('unit_organisasi_id', $unor_ids);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function tabelvalidasisekretaris()
+  {
+    $this->db->select('id_jabatan');
+    $this->db->from('tbjabatan');
+    $this->db->where('supervisor_id',$this->session->userdata('id_jabatan'));
+    $query = $this->db->get();
+    $idjab= $query->result_array();
+    $ids_jab = array_column($idjab, 'id_jabatan');
+
+    $this->db->select('unit_organisasi_id');
+    $this->db->from('tbjabatan');
+    $this->db->where_in('supervisor_id',$ids_jab);
+    $query = $this->db->get();
+    $unor= $query->result_array();
+    $unor_ids = array_column($unor, 'unit_organisasi_id');
+
+    $this->db->select('*');
+    $this->db->from('surat_keluar');
+    $this->db->where_in('unit_organisasi_id', $unor_ids);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
 
 
 

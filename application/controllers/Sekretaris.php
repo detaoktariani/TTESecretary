@@ -29,7 +29,7 @@ class Sekretaris extends CI_Controller {
         $data = array(
             'judul' => 'Tabel Validasi Surat',
             'html'  => 'Sekretaris/Tabelvalidasi',
-            'data'  => $this->Modelstaff->tabelvalidasi()
+            'data'  => $this->Modelstaff->tabelvalidasisekretaris()
         );
         $this->load->view('Dashboard', $data);
     }  

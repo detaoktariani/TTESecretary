@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Staff extends CI_Controller {
 	function __construct(){
         parent::__construct();
-       
     }
 
 	public function index(){
@@ -18,18 +17,26 @@ class Staff extends CI_Controller {
 
   public function insuratkeluar(){
     $phone2 = $this->Modelstaff->check_pnumber();
+    $tgl = $this->input->post('tgl_surat');
+    $formattedDate = date("d F Y", strtotime($tgl));
     $message2 = "<p>
-      Kepada Bapak/Ibu <br>
-      Terdapat surat baru yang perlu divalidasi sebagai berikut <br>
-      Tanggal Surat : ".$this->input->post('tgl_surat')."<br>
-      Perihal : ".$this->input->post('perihal')."<br>
-      Mohon untuk segera validasi melalui aplikasi SMSK (https://SMSK.pta-bengkulu.go.id/HAHAHA) <br>
-      </p>";
+            Kepada Bapak/Ibu <br>
+            Terdapat surat baru yang perlu divalidasi sebagai berikut <br>
+            Tanggal Surat : " . $formattedDate . "<br>
+            Perihal : " . $this->input->post('perihal') . "<br>
+            Mohon untuk segera validasi melalui aplikasi SMSK (https://SMSK.pta-bengkulu.go.id/HAHAHA) <br>
+        </p>";
+            
     $res = $this->Modelstaff->insert_suratkeluar();   
     if($res>=1){
-      $user = $this->session->userdata('username');
+     $user = $this->session->userdata('username');
       log_user_activity($user, "input surat keluar");
-      $this->post_WA($phone2, $message2);
+      $status = send_wa_message($phone2, $message2);
+        if ($status == 200) {
+          $this->session->set_flashdata('message', 'WA berhasil dikirim.');
+          } else {
+            $this->session->set_flashdata('message', 'Gagal mengirim WA.');
+          }
       $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
       redirect('Staff/Staff/tabelsuratkeluar');
     }else{
@@ -41,14 +48,12 @@ class Staff extends CI_Controller {
   }
 
   public function tabelsuratkeluar(){
-    {
       $data = array(
         'judul' => 'Tabel surat keluar',
         'html'  => 'Staff/Tabelsuratkeluar',
         'data'  => $this->Modelstaff->tabelsuratkeluar()
             );
             $this->load->view('Dashboard', $data);
-    }
   }
 
   public function tampedsuratkeluar(){
@@ -94,29 +99,7 @@ class Staff extends CI_Controller {
     }
   }
 
-  public function post_WA($phone2, $message2)
-  {
-      $usernamewa = $this->Model_login->getDataKey();
-      $sckeywa = $usernamewa[0]['sc_key'];
-      $sckeywa = base64_decode($sckeywa);
-      $client = new \GuzzleHttp\Client();
-      $response = $client->request('POST','https://jogja.wablas.com/api/send-message',
-      [
-          'headers' => [
-              'Authorization' => $sckeywa,
-          ],
-          'form_params' => [
-              'phone' => $phone2,
-              'message' => $message2,
-              'spintax' => "true",
-              ]
-      ]
-      );
-      $status = $response->getStatusCode();
-      if($status == 200)
-      {
-      }
-    }
+  
 
 
 }

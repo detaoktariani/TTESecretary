@@ -286,22 +286,7 @@
     </ul>
   </li><!-- End Forms Nav -->
 <?php } ?>
-      
-      <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Log out</span>
-        </a>
-      </li><!-- End Login Page Nav -->
 
     </ul>
 
