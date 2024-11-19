@@ -42,7 +42,7 @@
                     <td><a href="<?php echo $surkel->linksurat; ?>" target="_blank"><?php echo $surkel->perihal; ?></a></td>
                     <td>
                         <?php if ($surkel->statusvalidasi == 0): ?>
-                            <span class="badge bg-danger">Menunggu Validasi Kasub</span>  
+                            <span class="badge bg-dark">Menunggu Validasi Kasub</span>  
                         <?php elseif ($surkel->statusvalidasi == 1): ?>
                             <span class="badge bg-warning text-dark">Menunggu Validasi Kabag</span>                             
                         <?php elseif ($surkel->statusvalidasi == 2): ?>

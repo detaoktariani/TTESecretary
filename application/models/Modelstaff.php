@@ -232,7 +232,29 @@ class Modelstaff extends CI_Model {
     return $query->result();
   }
 
+  public function get_total_surat_keluar()
+  {
+      $this->db->from('surat_keluar');
+      return $this->db->count_all_results();
+  }
 
+  public function grafiksurat($tahun = null)
+{
+    
+    if ($tahun === null) {
+        $tahun = date('Y');
+    }
+
+    $this->db->select("MONTH(tgl_surat) as bulan, COUNT(*) as total_surat");
+    $this->db->from('surat_keluar');
+    $this->db->where("YEAR(tgl_surat)", $tahun); 
+    $this->db->group_by("MONTH(tgl_surat)"); 
+    $this->db->order_by("bulan", "ASC"); 
+
+    $query = $this->db->get();
+
+    return $query->result_array();
+}
 
 
 }

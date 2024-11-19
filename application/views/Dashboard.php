@@ -151,7 +151,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
     <?php if($this->session->userdata('level') == '3' ) { ?>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+  <a class="nav-link" href="<?php echo base_url('Admin/Kasub')?>">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -169,7 +169,7 @@
 
 <?php } else if($this->session->userdata('level') == '4' ) { ?>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+  <a class="nav-link" href="<?php echo base_url('Admin/Kabag')?>">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -187,7 +187,7 @@
 
 <?php } else if($this->session->userdata('level') == '5' ) { ?>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+  <a class="nav-link" href="<?php echo base_url('Admin/Sekretaris')?>">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -205,7 +205,7 @@
 
 <?php } else if($this->session->userdata('level') == '2') { ?>
   <li class="nav-item">
-    <a class="nav-link" href="index.html">
+  <a class="nav-link" href="<?php echo base_url('Admin/Staff')?>">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>

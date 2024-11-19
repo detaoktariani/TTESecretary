@@ -37,8 +37,10 @@ class Admin extends CI_Controller {
 	{
 	
 		$data = array(
-			'judul' => 'Dashboard',
-			'html'  => 'Staff/Dashboard',
+			'judul'  => 'Dashboard',
+			'html'   => 'Staff/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
 		  );
 		  $this->load->view('Dashboard', $data);
 	}
@@ -49,6 +51,8 @@ class Admin extends CI_Controller {
 		$data = array(
 			'judul' => 'Dashboard',
 			'html'  => 'Kasub/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
 		  );
 		  $this->load->view('Dashboard', $data);
 	}
@@ -59,6 +63,8 @@ class Admin extends CI_Controller {
 		$data = array(
 			'judul' => 'Dashboard',
 			'html'  => 'Kabag/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
 		  );
 		  $this->load->view('Dashboard', $data);
 	}
@@ -69,6 +75,8 @@ class Admin extends CI_Controller {
 		$data = array(
 			'judul' => 'Dashboard',
 			'html'  => 'Sekretaris/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
 		  );
 		  $this->load->view('Dashboard', $data);
 	}
