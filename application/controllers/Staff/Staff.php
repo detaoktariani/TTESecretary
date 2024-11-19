@@ -99,6 +99,19 @@ class Staff extends CI_Controller {
     }
   }
 
+  public function upload_skeluar(){
+    $id = $this->input->post('id1');
+
+    $res = $this->Modelstaff->upload_skeluar();
+      if($res>=1){
+          $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          redirect('Staff/Staff/tabelsuratkeluar');
+      }else{
+          $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          redirect('Staff/Staff/tabelsuratkeluar');
+      }
+  }
+
   
 
 
