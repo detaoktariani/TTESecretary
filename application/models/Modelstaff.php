@@ -257,4 +257,31 @@ class Modelstaff extends CI_Model {
 }
 
 
+  public function upload_skeluar() {
+    $id = $this->input->post('id'); // Ambil data ID dari input modal
+    $config['upload_path']   = './assets/surat_keluar/';
+    $config['allowed_types'] = 'pdf';
+    $config['max_size']      = 2048;
+    $config['encrypt_name']  = TRUE;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('file1')) {
+        $fileData = $this->upload->data();
+        $fileName = $fileData['file_name'];
+
+        // Update data di database
+        $data = ['pdfsurat' => $fileName];
+        $this->db->where('id', $id);
+        $this->db->update('surat_keluar', $data);
+
+        // $this->session->set_flashdata('success', 'File berhasil diunggah.');
+    } else {
+        // $this->session->set_flashdata('error', $this->upload->display_errors());
+    }
+}
+
+
+
+
 }
