@@ -8,7 +8,35 @@ class Login extends CI_Controller {
 	}
 
 	 public function index() {
-	 	$this->load->view('Vlogin');
+		if ($this->session->userdata('logged_in')==TRUE) {
+            // Mendapatkan level pengguna dari session
+            $userLevel = $this->session->userdata('level');
+
+            // Redirect ke halaman sesuai level pengguna
+            switch ($userLevel) {
+                case '1':
+                    redirect('Admin/Welcome'); // Admin
+                    break;
+                case '2':
+                    redirect('Admin/Staff'); // Staff
+                    break;
+                case '3':
+                    redirect('Admin/Kasub'); // Kasub
+                    break;
+                case '4':
+                    redirect('Admin/Kabag'); // Kabag
+                    break;
+                case '5':
+                    redirect('Admin/Sekretaris'); // Sekretaris
+                    break;
+                default:
+                    redirect('login'); // Jika tidak ada level yang sesuai
+                    break;
+            }
+        } else {
+            // Jika session tidak ada, arahkan ke halaman login
+            $this->load->view('Vlogin');
+        }
 	 }
 
 	function auth(){
@@ -29,16 +57,16 @@ class Login extends CI_Controller {
 				redirect('Admin/Welcome');
 			}else if ($this->session->userdata('level')=='2') {
 				log_user_activity($user, "Login staff");
-				redirect('Admin/Staff');
+				redirect('Staff/Staff/index');
 			}else if ($this->session->userdata('level')=='3') {
 				log_user_activity($user, "Login Kasub");
-				redirect('Admin/Kasub');
+				redirect('Kasub/index');
 			}else if ($this->session->userdata('level')=='4') {
 				log_user_activity($user, "Login Kabag");
-				redirect('Admin/Kabag');
+				redirect('Kabag/index');
 			}else if ($this->session->userdata('level')=='5') {
 				log_user_activity($user, "Login Sekretaris");
-				redirect('Admin/Sekretaris');			
+				redirect('Sekretaris/index');			
 			}else{
 				log_user_activity($user, "gagal login");
 				redirect('Login/index');

@@ -4,16 +4,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Staff extends CI_Controller {
 	function __construct(){
         parent::__construct();
+        $this->Model_login->securitystaff();
     }
 
 	public function index(){
+      $data = array(
+        'judul'  => 'Dashboard',
+        'html'   => 'Staff/Dashboard',
+        'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+        'Grafik' => $this->Modelstaff->grafiksurat(2024),
+        );
+        $this->load->view('Dashboard', $data);
+    }
+
+    public function inputsuratkeluar(){
 	
       $data = array(
         'judul' => 'Input surat keluar',
         'html'  => 'Staff/Inputsuratkeluar',
         );
         $this->load->view('Dashboard', $data);
-  }
+   }
 
   public function insuratkeluar(){
     $phone2 = $this->Modelstaff->check_pnumber();
@@ -43,7 +54,7 @@ class Staff extends CI_Controller {
       $user = $this->session->userdata('username');
       log_user_activity($user, "Gagal input surat keluar");
       $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-      redirect('Staff/Staff/index');    
+      redirect('Staff/Staff/inputsuratkeluar');    
     }
   }
 
@@ -104,9 +115,13 @@ class Staff extends CI_Controller {
 
     $res = $this->Modelstaff->upload_skeluar();
       if($res>=1){
+          $user = $this->session->userdata('username');
+          log_user_activity($user, "upload surat keluar (TTE)");
           $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
           redirect('Staff/Staff/tabelsuratkeluar');
       }else{
+          $user = $this->session->userdata('username');
+          log_user_activity($user, "gagal upload surat keluar (TTE)");
           $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Data gagal ditambah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
           redirect('Staff/Staff/tabelsuratkeluar');
       }

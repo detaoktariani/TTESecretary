@@ -4,17 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kabag extends CI_Controller {
 	function __construct(){
         parent::__construct();
+        $this->Model_login->securitykabag();
     }
 
-	public function index(){
-		{
-	
-      $data = array(
-        'judul' => 'Input surat keluar',
-        'html'  => 'Staff/Dashboard',
-        );
+	public function index(){	
+        $data = array(
+            'judul' => 'Dashboard',
+            'html'  => 'Kabag/Dashboard',
+            'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+            'Grafik' => $this->Modelstaff->grafiksurat(2024),
+            );
         $this->load->view('Dashboard', $data);
-      }}
+    }
 
       public function tabelvalidasi() {
         if ($this->input->post('id')) {

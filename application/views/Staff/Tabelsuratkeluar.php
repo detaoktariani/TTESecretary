@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <div class="row">
+    <div class="row"> -->
         <table class="table datatable">
             <thead>
                 <tr>
@@ -104,8 +104,8 @@
 
 
 
-</body>
-</html>
+<!-- </body>
+</html> -->
 
 <script>
  $(document).ready(function() {

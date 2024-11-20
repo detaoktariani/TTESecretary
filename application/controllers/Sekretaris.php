@@ -7,14 +7,14 @@ class Sekretaris extends CI_Controller {
     }
 
 	public function index(){
-		{
-	
-      $data = array(
-        'judul' => 'Input surat keluar',
-        'html'  => 'Staff/Dashboard',
-        );
-        $this->load->view('Dashboard', $data);
-      }}
+		$data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Sekretaris/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
+		  );
+		  $this->load->view('Dashboard', $data);
+	}
 
       public function tabelvalidasi() {
         if ($this->input->post('id')) {

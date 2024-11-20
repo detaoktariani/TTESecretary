@@ -60,6 +60,7 @@ class Modelstaff extends CI_Model {
     $this->db->select('*');
     $this->db->from('surat_keluar');
     $this->db->where('unit_organisasi_id',$unor_id);
+    $this->db->order_by('tgl_input', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }
@@ -141,6 +142,7 @@ class Modelstaff extends CI_Model {
     $this->db->select('*');
     $this->db->from('surat_keluar');
     $this->db->where('unit_organisasi_id',$unor_id);
+    $this->db->order_by('tgl_input', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }
@@ -205,6 +207,7 @@ class Modelstaff extends CI_Model {
     $this->db->select('*');
     $this->db->from('surat_keluar');
     $this->db->where_in('unit_organisasi_id', $unor_ids);
+    $this->db->order_by('tgl_input', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }
@@ -228,6 +231,7 @@ class Modelstaff extends CI_Model {
     $this->db->select('*');
     $this->db->from('surat_keluar');
     $this->db->where_in('unit_organisasi_id', $unor_ids);
+    $this->db->order_by('tgl_input', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }

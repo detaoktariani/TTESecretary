@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data Surat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Data Surat</title> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <script>
         // Fungsi untuk konfirmasi sebelum submit form
         function confirmValidation(event) {
@@ -21,8 +21,8 @@
             }
         }
     </script>
-</head>
-<body>
+<!-- </head>
+<body> -->
 <div class="container mt-5">
     <div class="row">
         <table class="table datatable">
@@ -62,5 +62,5 @@
         </table>
     </div>
 </div>
-</body>
-</html>
+<!-- </body>
+</html> -->

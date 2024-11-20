@@ -4,17 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kasub extends CI_Controller {
 	function __construct(){
         parent::__construct();
+        $this->Model_login->securitykasub();
     }
 
 	public function index(){
-		{
-	
-      $data = array(
-        'judul' => 'Input surat keluar',
-        'html'  => 'Staff/Dashboard',
-        );
-        $this->load->view('Dashboard', $data);
-      }}
+        $data = array(
+			'judul' => 'Dashboard',
+			'html'  => 'Kasub/Dashboard',
+			'Total'  => $this->Modelstaff->get_total_surat_keluar(),
+			'Grafik' => $this->Modelstaff->grafiksurat(2024),
+		  );
+		  $this->load->view('Dashboard', $data);
+        }
 
       public function tabelvalidasi() {
         if ($this->input->post('id')) {

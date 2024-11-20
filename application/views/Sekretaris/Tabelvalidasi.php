@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Data Surat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <script>
         function confirmValidation(event) {
             event.preventDefault();
@@ -15,8 +15,8 @@
             }
         }
     </script>
-</head>
-<body>
+<!-- </head>
+<body> -->
 <div class="container mt-5">
     <div class="row">
         <table class="table datatable">
@@ -60,5 +60,5 @@
         </table>
     </div>
 </div>
-</body>
-</html>
+<!-- </body>
+</html> -->
