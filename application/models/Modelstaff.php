@@ -190,7 +190,7 @@ class Modelstaff extends CI_Model {
             Terdapat surat baru yang perlu divalidasi sebagai berikut <br>
             Tanggal Surat : " . $formattedDate. "<br>
             Perihal : " . $perihal . "<br>
-            Mohon untuk segera validasi melalui aplikasi SMSK (https://SMSK.pta-bengkulu.go.id/HAHAHA) <br>
+            Mohon untuk segera validasi melalui aplikasi Quick Document PTA Bengkulu (https://quickdoc.pta-bengkulu.go.id/) <br>
         </p>";
     return $message2;
   }
