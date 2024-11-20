@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Data Surat</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
-<body>
+<body> -->
 <div class="container mt-5">
     <div class="row">
         <table class="table datatable">
@@ -32,8 +32,8 @@
         </table>
     </div>
 </div>
-</body>
-</html>
+<!-- </body>
+</html> -->
 <script>
     function checkEnter(event, id, field, element) {
     if (event.key === "Enter") {
