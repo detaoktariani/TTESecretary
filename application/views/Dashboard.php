@@ -90,8 +90,8 @@
                 $link = "#";
                 break;
         }
-        ?>
-            <span class="badge bg-primary badge-number"><?php echo count($notif); ?></span>
+        ?>  <?php if ($this->session->userdata('level')== '0'){} else{ ?>
+            <span class="badge bg-primary badge-number"><?php echo count($notif); ?></span> <?php } ?>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
@@ -254,6 +254,30 @@
       </li>
     </ul>
   </li><!-- End Forms Nav -->
+  <?php } else if($this->session->userdata('level') == '0' ) { ?>
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url('Super/index')?>">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+  <li class="nav-item">
+  <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Manajemen Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="<?php echo base_url('Super/tampilforminput')?>">
+          <i class="bi bi-circle"></i><span>Input Pengguna Baru</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php echo base_url('Super/Tabeldatapengguna')?>">
+          <i class="bi bi-circle"></i><span>Tabel Data Pengguna</span>
+        </a>
+      </li>
+    </ul>
+</li>
 <?php } else if($this->session->userdata('level') == '1') { ?>
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url('Admin/Welcome')?>">

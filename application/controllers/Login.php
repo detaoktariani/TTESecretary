@@ -52,7 +52,10 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('error','Username dan password salah!');
                 // echo "data salah";
 				redirect('Login/index');
-			} else if ($this->session->userdata('level')=='1') {
+			} else if ($this->session->userdata('level')=='0') {
+				log_user_activity($user, "Login superuser");
+				redirect('Super/Index');
+			}else if ($this->session->userdata('level')=='1') {
 				log_user_activity($user, "Login admin");
 				redirect('Admin/Welcome');
 			}else if ($this->session->userdata('level')=='2') {

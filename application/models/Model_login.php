@@ -92,6 +92,14 @@ class Model_login extends CI_Model {
         }
     }
 
+    public function securitySuper(){
+        $level = $this->session->userdata('level');
+        if($level!='0'){
+            $this->session->sess_destroy();
+            redirect('');
+        }
+    }
+
 }
 
 
